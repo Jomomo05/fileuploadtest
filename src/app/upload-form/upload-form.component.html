@@ -1,1 +1,5 @@
-<p>upload-form works!</p>
+<form (ngSubmit)="onSubmit()">
+  <input type="file" name="file" id="file" (change)="onFileSelected($event)" />
+  <button type="submit" [disabled]="!selectedFile">Upload</button>
+</form>
+
