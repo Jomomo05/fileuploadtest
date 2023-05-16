@@ -7,20 +7,26 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./upload-form.component.css']
 })
 export class UploadFormComponent {
-  selectedFile: null = null;
+  selectedFile: File | null = null;
 
   constructor(private http: HttpClient) { }
 
-  onFileSelected(event) {
-    this.selectedFile = <File>event.target.files[0];
+  onFileSelected(event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    if (inputElement.files && inputElement.files.length > 0) {
+      this.selectedFile = inputElement.files[0];
+    }
   }
 
+
   onSubmit() {
-    const fd = new FormData();
-    fd.append('file', this.selectedFile, this.selectedFile.name);
-    this.http.post('http://localhost:3000/upload', fd)
-      .subscribe(res => {
-        console.log(res);
-      });
+    if (this.selectedFile) {
+      const fd = new FormData();
+      fd.append('file', this.selectedFile, this.selectedFile.name);
+      this.http.post('http://localhost:3000/upload', fd)
+        .subscribe(res => {
+          console.log(res);
+        });
+    }
   }
 }
