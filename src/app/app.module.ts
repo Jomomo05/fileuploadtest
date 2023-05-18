@@ -9,11 +9,13 @@ import { UploadFormComponent } from './upload-form/upload-form.component';
 
 //Modulo para Auth0
 import { AuthModule } from '@auth0/auth0-angular';
+import { AuthButtonComponent } from './auth-button/auth-button.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UploadFormComponent
+    UploadFormComponent,
+    AuthButtonComponent
   ],
   imports: [
     BrowserModule,
