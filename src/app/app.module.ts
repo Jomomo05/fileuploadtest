@@ -7,6 +7,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UploadFormComponent } from './upload-form/upload-form.component';
 
+//Modulo para Auth0
+import { AuthModule } from '@auth0/auth0-angular';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +19,14 @@ import { UploadFormComponent } from './upload-form/upload-form.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    AuthModule.forRoot({
+      domain: 'dev-a4a7wtab7404ynai.us.auth0.com', //TODO: PONER EN ENV
+      clientId: 'YKIaC4NfOmPOfLi2iiGhGywsyaaC8eo0',//TODO: PONER EN ENV
+      authorizationParams: {
+        redirect_uri: window.location.origin
+      }
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
