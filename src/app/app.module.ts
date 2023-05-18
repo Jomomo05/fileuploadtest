@@ -11,6 +11,7 @@ import { UploadFormComponent } from './upload-form/upload-form.component';
 import { AuthModule } from '@auth0/auth0-angular';
 import { AuthButtonComponent } from './auth-button/auth-button.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
